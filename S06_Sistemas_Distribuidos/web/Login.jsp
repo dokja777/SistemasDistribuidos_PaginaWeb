@@ -134,7 +134,7 @@
             </div>
             <h1>Ingrese sus datos</h1>
             <form action="ValidarLogin" method="POST">
-                <input type="text" placeholder="Usuario" name="txtUsuario">
+                <input type="text" placeholder="Usuario" name="txtUsuario" autocomplete="off">
                 <input type="password" placeholder="Contraseña" name="contra">
                 
                 <button type="submit">Enviar</button>
