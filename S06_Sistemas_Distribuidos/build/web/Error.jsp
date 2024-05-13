@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Error al insertar cliente</h1>
+        <h2>Daniel esta i</h2>
     </body>
 </html>
