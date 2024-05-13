@@ -114,7 +114,8 @@ public class ValidarLogin extends HttpServlet {
 
                 } else {
                     // Autenticación fallida
-                    response.sendRedirect("Login.jsp");
+                    
+                    response.sendRedirect("Login.jsp?error=incorrecto");
                 }
 
                 //response.sendRedirect("MenuPrincipal.jsp");
