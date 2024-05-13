@@ -3,13 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Desktop/sistemas-distribuidos-main/S06_Sistemas_Distribuidos/web/ListaCliente.jsp</file>
-            <file>file:/C:/Users/ASUS/Desktop/sistemas-distribuidos-main/S06_Sistemas_Distribuidos/src/java/Controladores/CerrarSesion.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/sistemas-distribuidos-main/S06_Sistemas_Distribuidos/web/MenuCliente.jsp</file>
-            <file>file:/C:/Users/ASUS/Desktop/sistemas-distribuidos-main/S06_Sistemas_Distribuidos/src/java/Entidades/Cliente.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/sistemas-distribuidos-main/S06_Sistemas_Distribuidos/src/java/Controladores/ControlerCliente.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/sistemas-distribuidos-main/S06_Sistemas_Distribuidos/src/java/Conexion/Conexion.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/sistemas-distribuidos-main/S06_Sistemas_Distribuidos/web/Login.jsp</file>
+            <file>file:/C:/Users/ASUS/Desktop/sistemas-distribuidos-main/S06_Sistemas_Distribuidos/web/NuevoCliente.jsp</file>
+            <file>file:/C:/Users/ASUS/Desktop/sistemas-distribuidos-main/S06_Sistemas_Distribuidos/src/java/Controladores/NuevoCliente.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/sistemas-distribuidos-main/S06_Sistemas_Distribuidos/web/Error.jsp</file>
         </group>
     </open-files>
 </project-private>
