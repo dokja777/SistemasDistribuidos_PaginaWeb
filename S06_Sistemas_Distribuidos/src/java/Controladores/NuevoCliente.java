@@ -24,7 +24,7 @@ public class NuevoCliente extends HttpServlet {
         String dni = request.getParameter("dni");
         String telefono = request.getParameter("telefono");
         String movil = request.getParameter("movil");
-        String estado = "ACTIVADO";
+        String estado = "activo";
 
         Conexion.Conexion conBD = new Conexion.Conexion();
         Connection conn = conBD.Conexion();

@@ -171,10 +171,6 @@
                         <div class="input-box">
                             <input type="phone" name="movil" placeholder="Movil" class="input-control" required/>
                         </div>
-                        <div class="input-box">
-                            <input type="text" name="estado" placeholder="Estado" class="input-control" required/>
-                            <br> 
-                        </div>
                         <button type="submit" class="btn"><i class="fa-solid fa-user-plus"></i> Agregar</button>
                     </form>
                 </div>
