@@ -141,7 +141,9 @@
                      <td>${campo.movil}</td>
                      <td>${campo.estado}</td>
                      <td><a href="" class="btn btn-primary"><i class="fas fa-edit"></i> Editar</a></td>
-                     <td><a href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar</a></td>
+                     <td><a href="ControlerCliente?Op=Eliminar&Id=${campo.id}" 
+                            class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?');">
+                            <i class="fas fa-trash-alt"></i> Eliminar</a></td>
                 </tr>        
                 
                     
