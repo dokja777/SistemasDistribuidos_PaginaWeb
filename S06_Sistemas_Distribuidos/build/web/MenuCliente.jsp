@@ -165,7 +165,7 @@
                 <div class="imagen">
                     <img src="https://cdn-icons-png.freepik.com/512/2522/2522090.png" alt="" style="width: 100%; height: 100%;">
                 </div>
-                <a href="">NuevoCliente</a>
+                <a href="NuevoCliente.jsp">NuevoCliente</a>
             </div>
             
         </div>

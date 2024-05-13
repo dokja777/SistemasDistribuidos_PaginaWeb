@@ -136,15 +136,6 @@
             <form action="ValidarLogin" method="POST">
                 <input type="text" placeholder="Usuario" name="txtUsuario" autocomplete="off">
                 <input type="password" placeholder="Contraseña" name="contra">
-
-                <%
-                    String error = request.getParameter("error");
-                    if (error != null && error.equals("incorrecto")) {
-                %>
-                        <p style="color: red;">Los datos son incorrectos. Por favor, inténtelo de nuevo.</p>
-                <%
-                    }
-                %>
                 
                 <button type="submit">Enviar</button>
                 

@@ -20,6 +20,11 @@
         <servlet-name>ValidarLogin</servlet-name>
         <url-pattern>/ValidarLogin</url-pattern>
     </servlet-mapping>
+    <servlet>
+    <servlet-name>AgregarCliente</servlet-name>
+    <servlet-class>Controladores.AgregarCliente</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>CerrarSesion</servlet-name>
         <url-pattern>/CerrarSesion</url-pattern>

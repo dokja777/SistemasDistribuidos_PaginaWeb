@@ -117,6 +117,9 @@
                     <th scope="col">Dni</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Movil</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
                   </tr>
                 </thead>
                 
@@ -136,6 +139,9 @@
                      
                      <td>${campo.telefono}</td>
                      <td>${campo.movil}</td>
+                     <td>${campo.estado}</td>
+                     <td><a href="" class="btn btn-primary"><i class="fas fa-edit"></i> Editar</a></td>
+                     <td><a href="" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Eliminar</a></td>
                 </tr>        
                 
                     

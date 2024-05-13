@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Entidades;
 
-/**
- *
- * @author danie
- */
 public class Cliente {    
     private String Id;
     private String apellidos;
@@ -16,10 +8,11 @@ public class Cliente {
     private String DNI;
     private String telefono;
     private String movil;
+    private String estado; 
 
     public Cliente(){}
 
-    public Cliente(String Id, String apellidos, String nombres, String direccion, String DNI, String telefono, String movil) {
+    public Cliente(String Id, String apellidos, String nombres, String direccion, String DNI, String telefono, String movil, String estado) {
         this.Id = Id;
         this.apellidos = apellidos;
         this.nombres = nombres;
@@ -27,6 +20,15 @@ public class Cliente {
         this.DNI = DNI;
         this.telefono = telefono;
         this.movil = movil;
+        this.estado = estado; 
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getId() {
@@ -84,9 +86,4 @@ public class Cliente {
     public void setMovil(String movil) {
         this.movil = movil;
     }
-    
-    
-    
-    
-    
 }
