@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Controladores;
-
 
 import Entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,11 +60,7 @@ public class ValidarLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
 
-        
-                
     }
 
     /**
@@ -81,50 +74,73 @@ public class ValidarLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         Conexion.Conexion conBD = new Conexion.Conexion();
         Connection conn = conBD.Conexion();
         PreparedStatement ps;
         ResultSet rs;
-        
-        
-        String usuario=request.getParameter("txtUsuario");
-        String contraseña=request.getParameter("contra");
 
+        String usuario = request.getParameter("txtUsuario");
+        String contraseña = request.getParameter("contra");
+
+        // Convertir la contraseña ingresada a su hash MD5 equivalente
+        String contraseñaEncriptada = encriptarMD5(contraseña);
 
         try {
-            String sql = "SELECT * FROM t_usuario WHERE IdUsuario=? AND Passwd=?";
+            String sql = "SELECT * FROM t_usuario WHERE IdUsuario=? ";
             ps = conn.prepareStatement(sql);
             ps.setString(1, usuario);
-            ps.setString(2, contraseña);
-            
-           
+
             rs = ps.executeQuery();
 
             // Si encuentra una fila existente en la BD 
             if (rs.next()) {
                 // Aquí puedes redirigir a otra página
                 // Por ejemplo, supongamos que quieres redirigir a "pagina_siguiente.jsp"
-                
-                Usuario nuser=new Usuario(usuario,contraseña);
-                HttpSession session = request.getSession();
-                session.setAttribute("user", nuser);
-                request.getRequestDispatcher("MenuPrincipal.jsp").forward(request, response);
-                
-                
-                
+
+                String contraseñaAlmacenada = rs.getString("Passwd");
+
+                if (contraseñaAlmacenada.equals(contraseñaEncriptada)) {
+                    // Autenticación exitosa
+
+                    Usuario nuser = new Usuario(usuario, contraseña);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("user", nuser);
+                    request.getRequestDispatcher("MenuPrincipal.jsp").forward(request, response);
+
+                } else {
+                    // Autenticación fallida
+                    response.sendRedirect("Login.jsp");
+                }
+
                 //response.sendRedirect("MenuPrincipal.jsp");
             } else {
                 response.sendRedirect("Login.jsp");
             }
 
-
         } catch (SQLException ex) {
             System.out.println("Error de SQL..." + ex.getMessage());
-        } finally{
+        } finally {
             conBD.Discconet();
         }
-        
+
+    }
+    
+    private String encriptarMD5(String contraseña) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] hashBytes = md.digest(contraseña.getBytes());
+            // Convertir los bytes a una representación en cadena
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException ex) {
+            // Manejar la excepción en caso de que el algoritmo no esté disponible
+            ex.printStackTrace();
+            return null;
+        }
     }
 
     /**
