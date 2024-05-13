@@ -136,15 +136,7 @@
             <form action="ValidarLogin" method="POST">
                 <input type="text" placeholder="Usuario" name="txtUsuario" autocomplete="off">
                 <input type="password" placeholder="Contraseña" name="contra">
-                
-                <%
-                   String error = request.getParameter("error");
-                    if (error != null && error.equals("incorrecto")) {
-                %>
-                        <p style="color: red;">Los datos son incorrectos. Por favor, inténtelo de nuevo.</p>
-                <%
-                    }
-                %>
+               
                 
                 <button type="submit">Enviar</button>
                 
@@ -158,6 +150,61 @@
             </h4>
         </div>
     </div>
+
+
+        <!-- Mensaje de error -->
+        <div id="mensajeError" class="mensaje-error">
+            <span class="cerrar" onclick="cerrarMensajeError()">&times;</span>
+            <p>Los datos son incorrectos. Por favor, inténtelo de nuevo.</p>
+        </div>
+
+        <script>
+            // Ver mensaje de error
+            function mostrarMensajeError() {
+                document.getElementById('mensajeError').style.display = 'block';
+            }
+
+            // Ocultar mensaje de error
+            function cerrarMensajeError() {
+                document.getElementById('mensajeError').style.display = 'none';
+            }
+
+            <% String error = request.getParameter("error"); %>
+            <% if (error != null && error.equals("incorrecto")) { %>
+                mostrarMensajeError();
+            <% } %>
+        </script>
+
+        <style>
+
+       .mensaje-error {
+           display: none;
+           position: fixed;
+           z-index: 999;
+           left: 50%;
+           top: 50%;
+           transform: translate(-50%, -50%);
+           background-color: rgba(0, 0, 0, 0.8);
+           color: white;
+           padding: 20px;
+           border-radius: 5px;
+           
+       }
+
+       /* botón cerrar */
+       .cerrar {
+           position: absolute;
+           top: 10px;
+           right: 10px;
+           
+           cursor: pointer;
+       }
+       
+       .mensaje-error p {
+            border-top: 11px solid transparent;
+        }
+
+        </style>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
