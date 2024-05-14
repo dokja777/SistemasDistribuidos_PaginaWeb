@@ -135,9 +135,16 @@
             </div>
             <h1>Ingrese sus datos</h1>
             <form action="ValidarLogin" method="POST">
-                <input type="text" placeholder="Usuario" name="txtUsuario" autocomplete="off">
-                <input type="password" placeholder="Contraseña" name="contra">
-               
+                <div class="input-container">
+                    <input type="text" placeholder="Usuario" name="txtUsuario" autocomplete="off">
+                </div>
+                
+                <div class="input-container">
+                    <input type="password" id="password" placeholder="Contraseña" name="contra" style="width: 100%;">
+                    <button type="button" id="togglePassword">
+                        <i id="eyeIcon" class="fas fa-eye"></i>
+                    </button>
+                </div>
                 
                 <button type="submit">Enviar</button>
                 
@@ -150,10 +157,8 @@
                 ¡Descubre la excelencia de nuestra tienda de abarrotes! Encontrarás una amplia gama de productos frescos y de alta calidad, desde frutas y verduras recién cosechadas hasta carnes selectas y productos gourmet. Además, ofrecemos una variedad de productos de limpieza, cuidado personal y alimentos básicos a precios accesibles. Nuestro equipo está comprometido a brindarte un servicio excepcional, ayudándote a encontrar lo que necesitas y garantizando una experiencia de compra agradable. ¡Ven y descubre todo lo que tenemos para ofrecerte en nuestra tienda de abarrotes!
             </h4>
         </div>
-    </div>
 
-
-       
+        
         <!-- Mensaje de error -->
         <div id="mensajeError" class="mensaje-error">
             <span class="cerrar" onclick="cerrarMensajeError()">&times;</span>
@@ -206,7 +211,52 @@
             border-top: 11px solid transparent;
         }
 
+        
+        .input-container {
+            width: 113%;
+           
+            margin-bottom: 20px; 
+            display: flex;
+            align-items: center;
+        }
+        
+       
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        
+        /*  Boton mostrar y ocultar contraseña */
+        #togglePassword {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        #togglePassword i {
+            font-size: 140%;
+        }
+
         </style>
+
+        <script>
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+
+            togglePassword.addEventListener('click', function() {
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                eyeIcon.className = type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
+            });
+        </script>
+    </div>
+       
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
