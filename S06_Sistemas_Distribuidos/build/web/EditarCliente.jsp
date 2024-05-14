@@ -148,6 +148,13 @@
         
        
     </style>
+    
+    
+    <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
+            if (session.getAttribute("user")==null){
+                response.sendRedirect("Login.jsp");
+            }
+    %>
 
     <body style="position: relative; justify-content: center; background-image: url(https://img.freepik.com/vector-premium/mosaico-poligonal-fondo-repetitivo-abstracto-ilustracion-vectorial_676179-405.jpg)">
         <div class="cerrarSesion">
