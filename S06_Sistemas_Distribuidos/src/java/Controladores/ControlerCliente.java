@@ -91,7 +91,33 @@ public class ControlerCliente extends HttpServlet {
                     conBD.Discconet();
                 }                          
                 break;
+            case "EditarCliente":
+                try{
+                    String Id=request.getParameter("Id");
+                    String sql="select * from t_cliente where Id_Cliente=?";
+                    ps= conn.prepareStatement(sql);
+                    ps.setString(1, Id);
+                    rs= ps.executeQuery();
+                    Cliente client=new Cliente();
+                    while(rs.next()){
+                        client.setId(rs.getString("Id_Cliente"));
+                        client.setApellidos(rs.getString("Apellidos"));
+                        client.setNombres(rs.getString("Nombres"));
+                        client.setDNI(rs.getString("DNI"));
+                        client.setDireccion(rs.getString("Direccion"));
+                        client.setTelefono(rs.getString("Telefono"));
+                        client.setMovil(rs.getString("Movil"));
+                        Lista.add(client);
+                    }
+                    request.setAttribute("Lista", Lista);
+                    request.getRequestDispatcher("EditarCliente.jsp").forward(request, response);
+                }catch(SQLException ex){
+                    System.out.println("Error de SQL..."+ex.getMessage());
+                } finally{
+                    conBD.Discconet();
+                }                 
                 
+                break;   
             default:
 
         }
@@ -100,7 +126,51 @@ public class ControlerCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
+
+String Id =request.getParameter("Id");       
+        String Apellidos=request.getParameter("apellidos"); 
+        String Nombres=request.getParameter("nombres"); 
+        String DNI=request.getParameter("DNI");
+        String Direccion=request.getParameter("direccion"); 
+        String Telefono=request.getParameter("telefono"); 
+        String Movil=request.getParameter("movil"); 
+        Cliente client=new Cliente();
+        
+        client.setId(Id);
+        client.setApellidos(Apellidos);
+        client.setNombres(Nombres);
+        client.setDNI(DNI);
+        client.setDireccion(Direccion);
+        client.setTelefono(Telefono);
+        client.setMovil(Movil);     
+        
+        Conexion.Conexion conBD = new Conexion.Conexion();
+        Connection conn = conBD.Conexion();
+        PreparedStatement ps;
+        ResultSet rs;        
+        
+  
+            String sql="update t_cliente set apellidos=?, nombres=?, DNI=?, direccion=?, telefono=?, movil=? where Id_Cliente=?";
+
+            try{
+                ps= conn.prepareStatement(sql);
+                ps.setString(1, client.getApellidos());
+                ps.setString(2, client.getNombres());
+                ps.setString(3, client.getDNI());
+                ps.setString(4, client.getDireccion());
+                ps.setString(5, client.getTelefono());
+                ps.setString(6, client.getMovil());
+                ps.setString(7, client.getId());
+                ps.executeUpdate(); 
+            }catch(SQLException ex){
+                System.out.println("Error actualizando tabla..."+ex.getMessage());
+            } finally{
+                conBD.Discconet();
+            }  
+            response.sendRedirect("MenuCliente.jsp");
+        
     }
 
     @Override
