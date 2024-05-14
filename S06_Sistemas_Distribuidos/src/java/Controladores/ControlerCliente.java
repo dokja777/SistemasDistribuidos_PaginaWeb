@@ -58,16 +58,34 @@ public class ControlerCliente extends HttpServlet {
             case "Eliminar":
                 try {
                     String Id = request.getParameter("Id");
-                    String sql = "UPDATE t_cliente SET estado = 'inactivo' WHERE Id_Cliente = ?";
+                    String sqlGetEstado = "SELECT estado FROM t_cliente WHERE Id_Cliente = ?";
+                    String sqlUpdateEstado = "";
+
                     conn = conBD.Conexion();
-                    ps = conn.prepareStatement(sql);
-                    ps = conn.prepareStatement(sql);
+
+                    // Obtener el estado actual del cliente
+                    ps = conn.prepareStatement(sqlGetEstado);
                     ps.setString(1, Id);
-                    ps.executeUpdate();
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        String estadoActual = rs.getString("estado");
+
+                        // Si el estado actual es 'activo', cambia a 'inactivo'; si es 'inactivo', cambia a 'activo'
+                        if (estadoActual == null || estadoActual.isEmpty() || estadoActual.equals("activo")) {
+                            sqlUpdateEstado = "UPDATE t_cliente SET estado = 'inactivo' WHERE Id_Cliente = ?";
+                        } else if (estadoActual.equals("inactivo")) {
+                            sqlUpdateEstado = "UPDATE t_cliente SET estado = 'activo' WHERE Id_Cliente = ?";
+                        }
+
+                        // Ejecutar la actualización de estado
+                        ps = conn.prepareStatement(sqlUpdateEstado);
+                        ps.setString(1, Id);
+                        ps.executeUpdate();
+                    }
                     
                     // para volver a listar clientes
                     
-                    sql = "SELECT * FROM t_cliente";
+                    String sql = "SELECT * FROM t_cliente";
                     ps = conn.prepareStatement(sql);
                     rs = ps.executeQuery();
                     while (rs.next()) {
