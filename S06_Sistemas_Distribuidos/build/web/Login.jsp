@@ -152,6 +152,7 @@
     </div>
 
 
+       
         <!-- Mensaje de error -->
         <div id="mensajeError" class="mensaje-error">
             <span class="cerrar" onclick="cerrarMensajeError()">&times;</span>
