@@ -99,18 +99,24 @@ public class ValidarLogin extends HttpServlet {
                 // Por ejemplo, supongamos que quieres redirigir a "pagina_siguiente.jsp"
 
                 String contraseñaAlmacenada = rs.getString("Passwd");
+                String estadoUsuario = rs.getString("Estado");
 
-                if (contraseñaAlmacenada.equals(contraseñaEncriptada)) {
-                    // Autenticación exitosa
+                if ("activo".equalsIgnoreCase(estadoUsuario)) {
+                    if (contraseñaAlmacenada.equals(contraseñaEncriptada)) {
+                        // Autenticación exitosa
 
-                    Usuario nuser = new Usuario(usuario, contraseña);
-                    HttpSession session = request.getSession();
-                    session.setAttribute("user", nuser);
-                    request.getRequestDispatcher("MenuPrincipal.jsp").forward(request, response);
+                        Usuario nuser = new Usuario(usuario, contraseña);
+                        HttpSession session = request.getSession();
+                        session.setAttribute("user", nuser);
+                        request.getRequestDispatcher("MenuPrincipal.jsp").forward(request, response);
 
+                    } else {
+                        // Autenticación fallida
+                        response.sendRedirect("Login.jsp?error=incorrecto");
+                    }
                 } else {
-                    // Autenticación fallida
-                    response.sendRedirect("Login.jsp?error=incorrecto");
+                    // Usuario inactivo
+                    response.sendRedirect("Login.jsp?error=inactivo");
                 }
 
                 //response.sendRedirect("MenuPrincipal.jsp");
@@ -120,12 +126,10 @@ public class ValidarLogin extends HttpServlet {
 
         } catch (SQLException ex) {
             System.out.println("Error de SQL..." + ex.getMessage());
-        } finally {
-            conBD.Discconet();
-        }
+        } 
 
     }
-    
+
     private String encriptarMD5(String contraseña) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
