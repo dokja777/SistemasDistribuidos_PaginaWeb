@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2024 a las 20:43:03
+-- Tiempo de generación: 18-05-2024 a las 21:30:18
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -144,6 +144,12 @@ INSERT INTO `t_producto` (`Id_Prod`, `Descripcion`, `costo`, `precio`, `cantidad
 CREATE TABLE `t_usuario` (
   `IdUsuario` varchar(50) NOT NULL,
   `Passwd` varchar(50) NOT NULL,
+  `Apellidos` varchar(50) DEFAULT NULL,
+  `Nombres` varchar(50) DEFAULT NULL,
+  `Direccion` varchar(100) DEFAULT NULL,
+  `DNI` varchar(8) DEFAULT NULL,
+  `Telefono` varchar(10) DEFAULT NULL,
+  `Movil` varchar(9) DEFAULT NULL,
   `En linea` tinyint(1) NOT NULL,
   `Estado` varchar(10) NOT NULL DEFAULT 'activo'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -152,11 +158,11 @@ CREATE TABLE `t_usuario` (
 -- Volcado de datos para la tabla `t_usuario`
 --
 
-INSERT INTO `t_usuario` (`IdUsuario`, `Passwd`, `En linea`, `Estado`) VALUES
-('AJGARCIA', '12345678', 0, 'activo'),
-('UJPEREZ', 'HolaMundo', 0, 'activo'),
-('U123', '123', 0, 'inactivo'),
-('ADaniel', '123', 0, 'activo');
+INSERT INTO `t_usuario` (`IdUsuario`, `Passwd`, `Apellidos`, `Nombres`, `Direccion`, `DNI`, `Telefono`, `Movil`, `En linea`, `Estado`) VALUES
+('AJGARCIA', '25d55ad283aa400af464c76d713c07ad', 'García', 'Alejandro', 'Calle Falsa 123', '12345678', '5551234567', '987654321', 0, 'activo'),
+('UJPEREZ', '49342000ca291986c11b009b3127356f', 'Pérez', 'Juan', 'Avenida Siempre Viva 742', '87654321', '5557654321', '912345678', 0, 'activo'),
+('U123', '202cb962ac59075b964b07152d234b70', 'López', 'María', 'Calle de la Rosa 456', '11223344', '5552233445', '934567890', 0, 'inactivo'),
+('ADaniel', '202cb962ac59075b964b07152d234b70', 'Ramírez', 'Daniel', 'Boulevard Central 789', '55667788', '5556677889', '945678123', 0, 'activo');
 
 --
 -- Índices para tablas volcadas
