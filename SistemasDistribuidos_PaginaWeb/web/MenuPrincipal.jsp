@@ -131,10 +131,15 @@
 <body style="position: relative;">
     
     
-    <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
-        if (session.getAttribute("user")==null){
+    <%  
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
+        if (session.getAttribute("user") == null) {
             response.sendRedirect("Login.jsp");
         }
+        // Obtener el ID del usuario de la sesión
+        String idUsuario = (String) session.getAttribute("IdUsuario");
+        // Verificar si el usuario es administrador
+        boolean esAdmin = idUsuario != null && idUsuario.startsWith("A");
     %>
     
     
@@ -164,6 +169,14 @@
                 </div>
                 <a href="">Pedidos</a>
             </div>
+            <% if (esAdmin) { %> <!-- Habilita la opción "Usuarios" si isAdmin es true -->
+            <div class="opciones">
+                <div class="imagen">
+                    <img src="https://cdn.icon-icons.com/icons2/1760/PNG/512/4105938-account-card-id-identification-identity-card-profile-user-profile_113929.png" alt="" style="width: 100%; height: 100%;">
+                </div>
+                <a href="MenuUsuario.jsp">Usuarios</a>
+            </div>
+            <% } %>
         </div>
     </div>
 </body>
