@@ -78,7 +78,7 @@ public class ValidarLogin extends HttpServlet {
                         session.setAttribute("intentosFallidos_" + usuario, intentosFallidos);
                         if (intentosFallidos >= MAX_INTENTOS) {
                             session.setAttribute("tiempoBloqueo_" + usuario, ahora + BLOQUEO_TIEMPO_MS);
-                            response.sendRedirect("Login.jsp?error=usuario_bloqueado");
+                            response.sendRedirect("Login.jsp?error=bloqueado");
                         } else {
                             response.sendRedirect("Login.jsp?error=incorrecto");
                         }
@@ -93,7 +93,7 @@ public class ValidarLogin extends HttpServlet {
             }
         } catch (SQLException ex) {
             System.out.println("Error de SQL..." + ex.getMessage());
-        } 
+        }
     }
 
     private String encriptarMD5(String contraseña) {

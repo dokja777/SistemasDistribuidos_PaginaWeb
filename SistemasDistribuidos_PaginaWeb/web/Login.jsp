@@ -183,6 +183,8 @@
                         mostrarMensajeError("Los datos son incorrectos. Por favor, inténtelo de nuevo.");
                     <% } else if (error.equals("inactivo")) { %>
                         mostrarMensajeError("Usuario inactivo. Contacte al administrador.");
+                    <% } else if (error.equals("bloqueado")) { %>
+                        mostrarMensajeError("Ha superado los intentos establecidos, se le bloqueará por 10 segundos.");
                     <% } %>
                 <% } %>
             </script>
