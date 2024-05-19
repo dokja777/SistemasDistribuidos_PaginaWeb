@@ -54,14 +54,14 @@ public class ControlerUsuario extends HttpServlet {
             rs = ps.executeQuery();
             while (rs.next()) {
                 Usuario user = new Usuario();
-                user.setId_usuario(rs.getString("IdUsuario") != null ? rs.getString("IdUsuario") : "");
-                user.setApellidos(rs.getString("Apellidos") != null ? rs.getString("Apellidos") : "");
-                user.setNombres(rs.getString("Nombres") != null ? rs.getString("Nombres") : "");
-                user.setDireccion(rs.getString("Direccion") != null ? rs.getString("Direccion") : "");
-                user.setDNI(rs.getString("DNI") != null ? rs.getString("DNI") : "");
-                user.setTelefono(rs.getString("Telefono") != null ? rs.getString("Telefono") : "");
-                user.setMovil(rs.getString("Movil") != null ? rs.getString("Movil") : "");
-                user.setEstado(rs.getString("Estado") != null ? rs.getString("Estado") : "");
+                user.setId_usuario(rs.getString("IdUsuario"));
+                user.setApellidos(rs.getString("Apellidos"));
+                user.setNombres(rs.getString("Nombres"));
+                user.setDireccion(rs.getString("Direccion"));
+                user.setDNI(rs.getString("DNI"));
+                user.setTelefono(rs.getString("Telefono"));
+                user.setMovil(rs.getString("Movil"));
+                user.setEstado(rs.getString("Estado"));
                 Lista.add(user);
             }
             request.setAttribute("Lista", Lista);
