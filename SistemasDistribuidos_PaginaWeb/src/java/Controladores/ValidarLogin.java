@@ -72,7 +72,8 @@ public class ValidarLogin extends HttpServlet {
                         session.removeAttribute("intentosFallidos_" + usuario);
                         session.removeAttribute("tiempoBloqueo_" + usuario);                      
                         
-                        session.setMaxInactiveInterval(15); // se le da 10 segundos, sino al hacer una accion se cierra, le di 5 segundos mas para q no haya problemas al contar y espere que llegue a 0 el contador de js                     
+                        //session.setMaxInactiveInterval(5); // se le da 10 segundos, sino al hacer una accion se cierra, le di 5 segundos mas para q no haya problemas al contar y espere que llegue a 0 el contador de js                     
+                        
                         request.getRequestDispatcher("MenuPrincipal.jsp").forward(request, response);
                     } else {
                         // Contraseña incorrecta

@@ -70,7 +70,7 @@ public class NuevoUsuario extends HttpServlet {
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
-                response.sendRedirect("MenuUsuario.jsp");
+                response.sendRedirect("NuevoUsuario.jsp");
             } else {
                 response.sendRedirect("Error.jsp");
             }

@@ -45,7 +45,8 @@ public class NuevoCliente extends HttpServlet {
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
-                response.sendRedirect("MenuCliente.jsp");
+                response.sendRedirect("NuevoCliente.jsp");
+                
             } else {
                 response.sendRedirect("Error.jsp");
             }
