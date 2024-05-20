@@ -159,7 +159,7 @@
                 <div class="imagen">
                     <img src="https://cdn-icons-png.freepik.com/512/2522/2522090.png" alt="" style="width: 100%; height: 100%;">
                 </div>
-                <a href="">NuevoUsuario</a>
+                <a href="NuevoUsuario.jsp">NuevoUsuario</a>
             </div>
             
         </div>
