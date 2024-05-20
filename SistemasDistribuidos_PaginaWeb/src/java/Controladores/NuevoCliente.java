@@ -29,7 +29,7 @@ public class NuevoCliente extends HttpServlet {
         Conexion.Conexion conBD = new Conexion.Conexion();
         Connection conn = conBD.Conexion();
         PreparedStatement ps = null;
-        String sql = "INSERT INTO t_cliente (Id_Cliente, Apellidos, Nombres, Direccion, DNI, Telefono, Movil, Estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO t_cliente (Id_Cliente, Apellidos, Nombres, Direccion, DNI, Telefono, Movil, Estado, EnLinea) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             ps = conn.prepareStatement(sql);
@@ -41,16 +41,17 @@ public class NuevoCliente extends HttpServlet {
             ps.setString(6, telefono);
             ps.setString(7, movil);
             ps.setString(8, estado);
+            ps.setInt(9,0 );
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
                 response.sendRedirect("MenuCliente.jsp");
             } else {
-                response.sendRedirect("error.jsp");
+                response.sendRedirect("Error.jsp");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("Error.jsp");
         } finally {
             try {
                 if (ps != null) {

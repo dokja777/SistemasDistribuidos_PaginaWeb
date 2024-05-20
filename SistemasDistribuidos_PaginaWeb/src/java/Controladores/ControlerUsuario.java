@@ -61,6 +61,7 @@ public class ControlerUsuario extends HttpServlet {
                 user.setDNI(rs.getString("DNI"));
                 user.setTelefono(rs.getString("Telefono"));
                 user.setMovil(rs.getString("Movil"));
+                user.setEnlinea(rs.getString("EnLinea"));
                 user.setEstado(rs.getString("Estado"));
                 Lista.add(user);
             }

@@ -1,9 +1,8 @@
 <%-- 
-    Document   : NuevoUsuario
-    Created on : 19 may. 2024, 18:00:49
-    Author     : Dayanna
+    Document   : NuevoCliente
+    Created on : 11 may. 2024, 21:20:48
+    Author     : Cruz
 --%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -150,16 +149,16 @@
     
     <body style="position: relative; justify-content: center; background-image: url(https://img.freepik.com/vector-premium/mosaico-poligonal-fondo-repetitivo-abstracto-ilustracion-vectorial_676179-405.jpg)">
         <div class="cerrarSesion">
-            <a href="MenuUsuario.jsp" class="regresar"><i class="fa-solid fa-circle-left" style="font-size: 6vh; padding: 2vh 0;"></i>Regresar Pagina</a>
+            <a href="MenuCliente.jsp" class="regresar"><i class="fa-solid fa-circle-left" style="font-size: 6vh; padding: 2vh 0;"></i>Regresar Pagina</a>
             <a href="CerrarSesion" class="sesion"><i class="fa-solid fa-power-off" style="font-size: 6vh; padding: 2vh 0;"></i>Cerrar Sesión</a>
         </div>
         
         <section class="form-main">
             <div class="form-content">
                 <div class="boxy">
-                    <h3 class="titulo">NUEVO USUARIO</h3>
+                    <h3 class="titulo">NUEVO CLIENTE</h3>
 
-                    <form class="form-nu" action="NuevoUsuario" method="POST">
+                    <form class="form-nu" action="NuevoCliente" method="POST">
                         <div class="input-box">
                             <input type="text" name="apellidos" placeholder="Apellidos" class="input-control" required/>
                         </div>
@@ -177,12 +176,6 @@
                         </div>
                         <div class="input-box">
                             <input type="phone" name="movil" placeholder="Movil" class="input-control" required/>
-                        </div>
-                        <div class="input-box">
-                            <input type="text" name="idUsuario" placeholder="USUARIO" class="input-control" required/>
-                        </div>
-                        <div class="input-box">
-                            <input type="password" name="password" placeholder="Contraseña" class="input-control" required/>
                         </div>
                         <button type="submit" class="btn"><i class="fa-solid fa-user-plus"></i> Agregar</button>
                     </form>

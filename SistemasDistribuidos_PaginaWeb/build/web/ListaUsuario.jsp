@@ -91,6 +91,7 @@
                     <th scope="col">DNI</th>
                     <th scope="col">Teléfono</th>
                     <th scope="col">Móvil</th>
+                    <th scope="col">En Linea</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Eliminar</th>
@@ -106,14 +107,15 @@
                         <td><c:out value="${campo.DNI}" /></td>
                         <td><c:out value="${campo.telefono}" /></td>
                         <td><c:out value="${campo.movil}" /></td>
+                        <td><c:out value="${campo.enLinea}" /></td>
                         <td><c:out value="${campo.estado}" /></td>
-                        <td>
-                            <a href="" class="btn btn-primary">
+                         <td>
+                            <a href="ControlerUsuario?Op=EditarUsuario&IdUsuario=${campo.id_usuario}" class="btn btn-primary">
                                 <i class="fas fa-edit"></i> Editar
                             </a>
                         </td>
                         <td>
-                            <a href="" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
+                            <a href="ControlerUsuario?Op=EliminarUsuario&IdUsuario=${campo.id_usuario}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
                                 <i class="fas fa-trash-alt"></i> Eliminar
                             </a>
                         </td>

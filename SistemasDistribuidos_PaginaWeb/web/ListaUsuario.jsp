@@ -91,6 +91,7 @@
                     <th scope="col">DNI</th>
                     <th scope="col">Teléfono</th>
                     <th scope="col">Móvil</th>
+                    <th scope="col">En Linea</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Eliminar</th>
@@ -106,6 +107,7 @@
                         <td><c:out value="${campo.DNI}" /></td>
                         <td><c:out value="${campo.telefono}" /></td>
                         <td><c:out value="${campo.movil}" /></td>
+                        <td><c:out value="${campo.enLinea}" /></td>
                         <td><c:out value="${campo.estado}" /></td>
                          <td>
                             <a href="ControlerUsuario?Op=EditarUsuario&IdUsuario=${campo.id_usuario}" class="btn btn-primary">

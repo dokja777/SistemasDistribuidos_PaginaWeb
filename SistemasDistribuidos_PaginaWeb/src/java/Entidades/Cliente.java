@@ -9,10 +9,11 @@ public class Cliente {
     private String telefono;
     private String movil;
     private String estado; 
+    private String enLinea;
 
     public Cliente(){}
 
-    public Cliente(String Id, String apellidos, String nombres, String direccion, String DNI, String telefono, String movil, String estado) {
+    public Cliente(String Id, String apellidos, String nombres, String direccion, String DNI, String telefono, String movil, String estado, String enLinea) {
         this.Id = Id;
         this.apellidos = apellidos;
         this.nombres = nombres;
@@ -20,15 +21,8 @@ public class Cliente {
         this.DNI = DNI;
         this.telefono = telefono;
         this.movil = movil;
-        this.estado = estado; 
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
         this.estado = estado;
+        this.enLinea = enLinea;
     }
 
     public String getId() {
@@ -86,4 +80,22 @@ public class Cliente {
     public void setMovil(String movil) {
         this.movil = movil;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getEnLinea() {
+        return enLinea;
+    }
+
+    public void setEnLinea(String enLinea) {
+        this.enLinea = enLinea;
+    }
+
+   
 }

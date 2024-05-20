@@ -1,24 +1,30 @@
+
+
 <%-- 
-    Document   : NuevoUsuario
-    Created on : 19 may. 2024, 18:00:49
-    Author     : Dayanna
+    Document   : ModificarCliente
+    Created on : 13 may. 2024, 16:46:40
+    Author     : Alexandra
 --%>
 
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.List"%>
+<%@page import="Entidades.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    List<Cliente> Lista= (List<Cliente>) request.getAttribute("Lista");
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Editar Cliente</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/26a3cc7edf.js" crossorigin="anonymous"></script>
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
     </head>
-    
     <style>
         * {
             margin: 0;
@@ -78,7 +84,7 @@
         }
         
         .form-main{
-            min-height: 60vh;
+            min-height: 100vh;
             padding:  40px 15px;
             display: flex;
             align-items: center;
@@ -92,6 +98,7 @@
             position: relative;
             z-index: 1;
             box-shadow: 0 0 30px #000;
+            margin: auto;
         }
         
         .form-content .boxy{
@@ -100,20 +107,23 @@
             box-shadow: 0 4px 9.4px 0.6px rgba(3,39,61,.1);
             -webkit-box-shadow: 0 4px 9.4px 0.6px rgba(3,39,61,.1);
             
+
         .form-nu .input-box{
-            margin: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .form-nu .input-box label{
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px
         }
         
         .form-nu .input-control{
-            display: block;
-            height: 45px;
-            width: 100%;   
-            border-bottom: 1px solid #004a8c;
-            color: inherit;
-            font-weight: inherit;
-            font-family: inherit;
-            font-size: 16px;
-            color: #888;
+            height: 35px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
         }
 
         .form-nu .input-control:focus{
@@ -121,7 +131,7 @@
         }
         
         .form-nu .btn{
-            height: 45px;
+            height: 40px;
             width: 100%;
             font-size: 16px;
             font-weight: 500;
@@ -133,63 +143,69 @@
             background: #004a8c;
             border: none;
             color: #f6f6f6;
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-            min-width: 9.375em;
+            margin-top: 20px;
         }
         
        
     </style>
+    
     
     <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
             if (session.getAttribute("user")==null){
                 response.sendRedirect("Login.jsp");
             }
     %>
-    
+
     <body style="position: relative; justify-content: center; background-image: url(https://img.freepik.com/vector-premium/mosaico-poligonal-fondo-repetitivo-abstracto-ilustracion-vectorial_676179-405.jpg)">
         <div class="cerrarSesion">
-            <a href="MenuUsuario.jsp" class="regresar"><i class="fa-solid fa-circle-left" style="font-size: 6vh; padding: 2vh 0;"></i>Regresar Pagina</a>
+            <a href="MenuCliente.jsp" class="regresar"><i class="fa-solid fa-circle-left" style="font-size: 6vh; padding: 2vh 0;"></i>Regresar Pagina</a>
             <a href="CerrarSesion" class="sesion"><i class="fa-solid fa-power-off" style="font-size: 6vh; padding: 2vh 0;"></i>Cerrar Sesión</a>
         </div>
         
         <section class="form-main">
             <div class="form-content">
                 <div class="boxy">
-                    <h3 class="titulo">NUEVO USUARIO</h3>
+                    <h3 class="titulo">EDITAR CLIENTE</h3>
 
-                    <form class="form-nu" action="NuevoUsuario" method="POST">
-                        <div class="input-box">
-                            <input type="text" name="apellidos" placeholder="Apellidos" class="input-control" required/>
-                        </div>
-                        <div class="input-box">
-                            <input type="text" name="nombres" placeholder="Nombres" class="input-control" required/>
-                        </div>
-                        <div class="input-box">
-                            <input type="text" name="direccion" placeholder="Dirección" class="input-control" required/>
-                        </div>
-                        <div class="input-box">
-                            <input type="text" name="dni" placeholder="DNI" class="input-control" required/>
-                        </div>
-                        <div class="input-box">
-                            <input type="phone" name="telefono" placeholder="Telefono" class="input-control" required/>
-                        </div>
-                        <div class="input-box">
-                            <input type="phone" name="movil" placeholder="Movil" class="input-control" required/>
-                        </div>
-                        <div class="input-box">
-                            <input type="text" name="idUsuario" placeholder="USUARIO" class="input-control" required/>
-                        </div>
-                        <div class="input-box">
-                            <input type="password" name="password" placeholder="Contraseña" class="input-control" required/>
-                        </div>
-                        <button type="submit" class="btn"><i class="fa-solid fa-user-plus"></i> Agregar</button>
+                    <form class="form-nu" action="ControlerCliente" method="POST">
+                        <c:forEach var="campo" items="${Lista}">
+                            <div class="input-box">
+                                <label>Id Cliente:</label>
+                                <input type="text" name="Id" value="${campo.id}" readonly/>
+                            </div>
+                            <div class="input-box">
+                                <label>Apellidos:</label>
+                                <input type="text" name="apellidos" value="${campo.apellidos}" required/>
+                            </div>
+                            <div class="input-box">
+                                <label>Nombres:</label>
+                                <input type="text" name="nombres" value="${campo.nombres}" required/>
+                            </div>
+                            <div class="input-box">
+                                <label>DNI:</label>
+                                <input type="text" name="DNI" value="${campo.DNI}" required/>
+                            </div>
+                            <div class="input-box">
+                                <label>Dirección:</label>
+                                <input type="text" name="direccion" value="${campo.direccion}" required/>
+                            </div>
+                            <div class="input-box">
+                                <label>Teléfono:</label>
+                                <input type="text" name="telefono" value="${campo.telefono}" required/>
+                            </div>
+                            <div class="input-box">
+                                <label>Móvil:</label>
+                                <input type="text" name="movil" value="${campo.movil}" required/>
+                            </div>
+                        </c:forEach>
+                        <button type="submit" class="btn"> Modificar</button>
                     </form>
                 </div>
             </div>
         </section>
+
+
+
         
     </body>
 </html>
-      

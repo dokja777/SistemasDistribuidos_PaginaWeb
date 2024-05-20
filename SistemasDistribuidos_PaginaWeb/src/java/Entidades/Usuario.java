@@ -9,7 +9,7 @@ package Entidades;
  * @author danie
  */
 public class Usuario {
-    private String usuario;
+    private String id_usuario;
     private String contraseña;
     private String apellidos;
     private String nombres;
@@ -17,7 +17,7 @@ public class Usuario {
     private String DNI;
     private String telefono;
     private String movil;
-    private String enlinea;
+    private String enLinea;
     private String estado;
     
     public Usuario(){
@@ -25,13 +25,13 @@ public class Usuario {
     }
     
     // Constructor que acepta solo usuario y contraseña
-    public Usuario(String usuario, String contraseña) {
-        this.usuario = usuario;
+    public Usuario(String id_usuario, String contraseña) {
+        this.id_usuario = id_usuario;
         this.contraseña = contraseña;
     }
 
-    public Usuario(String usuario, String contraseña, String apellidos, String nombres, String direccion, String DNI, String telefono, String movil, String enlinea, String estado) {
-        this.usuario = usuario;
+    public Usuario(String id_usuario, String contraseña, String apellidos, String nombres, String direccion, String DNI, String telefono, String movil, String enLinea, String estado) {
+        this.id_usuario = id_usuario;
         this.contraseña = contraseña;
         this.apellidos = apellidos;
         this.nombres = nombres;
@@ -39,16 +39,16 @@ public class Usuario {
         this.DNI = DNI;
         this.telefono = telefono;
         this.movil = movil;
-        this.enlinea = enlinea;
+        this.enLinea = enLinea;
         this.estado = estado;
     }
 
     public String getId_usuario() {
-        return usuario;
+        return id_usuario;
     }
 
     public void setId_usuario(String Id_usuario) {
-        this.usuario = Id_usuario;
+        this.id_usuario = Id_usuario;
     }
 
     public String getContraseña() {
@@ -107,12 +107,12 @@ public class Usuario {
         this.movil = movil;
     }
 
-    public String getEnlinea() {
-        return enlinea;
+    public String getEnLinea() {
+        return enLinea;
     }
 
-    public void setEnlinea(String enlinea) {
-        this.enlinea = enlinea;
+    public void setEnlinea(String enLinea) {
+        this.enLinea = enLinea;
     }
 
     public String getEstado() {

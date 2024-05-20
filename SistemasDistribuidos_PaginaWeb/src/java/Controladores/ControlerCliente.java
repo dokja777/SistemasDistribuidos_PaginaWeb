@@ -44,6 +44,7 @@ public class ControlerCliente extends HttpServlet {
                         client.setTelefono(rs.getString("Telefono"));
                         client.setMovil(rs.getString("Movil"));
                         client.setEstado(rs.getString("Estado"));
+                        client.setEnLinea(rs.getString("EnLinea"));
                         Lista.add(client);
                     }
                     request.setAttribute("Lista", Lista);
