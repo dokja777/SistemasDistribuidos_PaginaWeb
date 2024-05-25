@@ -12,6 +12,10 @@
         <servlet-name>CerrarSesion</servlet-name>
         <servlet-class>Controladores.CerrarSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControlerProducto</servlet-name>
+        <servlet-class>Controladores.ControlerProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlerCliente</servlet-name>
         <url-pattern>/ControlerCliente</url-pattern>
@@ -21,22 +25,20 @@
         <url-pattern>/ValidarLogin</url-pattern>
     </servlet-mapping>
     <servlet>
-    <servlet-name>AgregarCliente</servlet-name>
-    <servlet-class>Controladores.AgregarCliente</servlet-class>
+        <servlet-name>AgregarCliente</servlet-name>
+        <servlet-class>Controladores.AgregarCliente</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>CerrarSesion</servlet-name>
         <url-pattern>/CerrarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControlerProducto</servlet-name>
+        <url-pattern>/ControlerProducto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
-    
-    
-    
-    
 </web-app>

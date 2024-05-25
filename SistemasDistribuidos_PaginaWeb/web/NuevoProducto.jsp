@@ -185,7 +185,7 @@
                     <div class="boxy">
                         <h3 class="titulo">NUEVO PRODUCTO</h3>
 
-                        <form class="form-nu" action="NuevoProducto" method="POST">
+                        <form class="form-nu" action="ControlerProducto" method="POST">
                             <div class="input-box">
                                 <input type="text" name="Descripcion" placeholder="Descripción" class="input-control" maxlength="50" required/>
                             </div>
@@ -198,6 +198,7 @@
                             <div class="input-box">
                                 <input type="number" step="1" name="cantidad" placeholder="Cantidad" class="input-control"/>
                             </div>
+                            <input type="hidden" name="Op" value="NuevoProducto" />
                             <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> Agregar</button>
                         </form>
 
