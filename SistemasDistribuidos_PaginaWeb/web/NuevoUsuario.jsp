@@ -173,7 +173,7 @@
             <a href="CerrarSesion" class="sesion"><i class="fa-solid fa-power-off" style="font-size: 6vh; padding: 2vh 0;"></i>Cerrar Sesión</a>
         </div>
         
-        <div class="cerrarSesion" style="justify-content: end; margin: 40vh 0vh 0vh 0vh">
+        <div class="cerrarSesion" style="justify-content: end; margin: 40vh 0vh 0vh 0vh;">
             <a class="VerLista" href="ControlerUsuario?Op=Listar">ListaUsuario</a>
         </div>
         

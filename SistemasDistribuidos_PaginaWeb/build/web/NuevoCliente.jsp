@@ -22,7 +22,25 @@
         * {
             margin: 0;
         }
-
+        
+        .VerLista{
+            background-color: white;
+            text-decoration: none;
+                font-size: 3vh;
+                color: black;            
+                text-align: center;
+                border-radius: 5vh;
+                border: 1px solid black;
+                
+                padding: 1vh 3vh;
+                margin-right: 30vh
+        }
+        
+        .VerLista:hover{
+            background-color: black;
+            color: white;
+        }
+        
         .sesion:hover {
             background-color: red;
         }
@@ -153,6 +171,10 @@
             <a href="CerrarSesion" class="sesion"><i class="fa-solid fa-power-off" style="font-size: 6vh; padding: 2vh 0;"></i>Cerrar Sesión</a>
         </div>
         
+        <div class="cerrarSesion" style="justify-content: end; margin: 40vh 0vh 0vh 0vh; ">
+            <a class="VerLista" href="ControlerCliente?Op=Listar">ListaCliente</a>
+        </div>
+        
         <section class="form-main">
             <div class="form-content">
                 <div class="boxy">
@@ -184,5 +206,7 @@
         </section>
         
     </body>
+    
+    <%@ include file="ModalSesionExpirada.jsp" %>
 </html>
       
