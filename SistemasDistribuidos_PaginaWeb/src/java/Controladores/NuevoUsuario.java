@@ -49,11 +49,14 @@ public class NuevoUsuario extends HttpServlet {
         String movil = request.getParameter("movil");
         String password = request.getParameter("password"); 
         String estado = "activo";
+        
+        // Encriptar la contraseña antes de almacenarla en la base de datos
+        String passwordEncriptado = EncriptadorAES.encriptarAES(password);
 
         Conexion.Conexion conBD = new Conexion.Conexion();
         Connection conn = conBD.Conexion();
         PreparedStatement ps = null;
-        String sql = "INSERT INTO t_usuario (IdUsuario, Apellidos, Nombres, Direccion, DNI, Telefono, Movil, Passwd,EnLinea, Estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO t_usuario (IdUsuario, Apellidos, Nombres, Direccion, DNI, Telefono, Movil, Passwd, EnLinea, Estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             ps = conn.prepareStatement(sql);
@@ -64,7 +67,7 @@ public class NuevoUsuario extends HttpServlet {
             ps.setString(5, dni);
             ps.setString(6, telefono);
             ps.setString(7, movil);
-            ps.setString(8, password); 
+            ps.setString(8, passwordEncriptado); 
             ps.setInt(9, 0);
             ps.setString(10, estado);
 

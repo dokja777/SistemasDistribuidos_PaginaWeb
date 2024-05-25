@@ -35,8 +35,7 @@ public class ValidarLogin extends HttpServlet {
         String usuario = request.getParameter("txtUsuario");
         String contraseña = request.getParameter("contra");
 
-        // Convertir la contraseña ingresada a su hash MD5 equivalente
-        String contraseñaEncriptada = encriptarMD5(contraseña);
+        String contraseñaEncriptada = EncriptadorAES.encriptarAES(contraseña);
 
         HttpSession session = request.getSession();
         Integer intentosFallidos = (Integer) session.getAttribute("intentosFallidos_" + usuario);
@@ -60,11 +59,12 @@ public class ValidarLogin extends HttpServlet {
             rs = ps.executeQuery();
 
             if (rs.next()) {
-                String contraseñaAlmacenada = rs.getString("Passwd");
+                String contraseñaAlmacenadaEncriptada  = rs.getString("Passwd");
                 String estadoUsuario = rs.getString("Estado");
 
                 if ("activo".equalsIgnoreCase(estadoUsuario)) {
-                    if (contraseñaAlmacenada.equals(contraseñaEncriptada)) {
+                    String contraseñaAlmacenada = EncriptadorAES.desencriptarAES(contraseñaAlmacenadaEncriptada);
+                    if (contraseñaAlmacenada.equals(contraseña)) {
                         // Autenticación exitosa
                         Usuario nuser = new Usuario(usuario, contraseña);
                         session.setAttribute("user", nuser);
@@ -96,21 +96,6 @@ public class ValidarLogin extends HttpServlet {
             }
         } catch (SQLException ex) {
             System.out.println("Error de SQL..." + ex.getMessage());
-        }
-    }
-
-    private String encriptarMD5(String contraseña) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] hashBytes = md.digest(contraseña.getBytes());
-            StringBuilder sb = new StringBuilder();
-            for (byte b : hashBytes) {
-                sb.append(String.format("%02x", b));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            ex.printStackTrace();
-            return null;
         }
     }
 
