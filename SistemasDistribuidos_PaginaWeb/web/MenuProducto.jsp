@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index
-    Created on : 4 may 2024, 19:29:31
-    Author     : danie
+    Document   : MenuProductos
+    Created on : 25 may. 2024, 17:03:46
+    Author     : maria
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,16 +23,13 @@
         .sesion:hover {
             background-color: red;
         }
-        
-        
 
         .cerrarSesion {
             width: 100%;    
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             position: absolute;
             margin: 3vh 0 0 0;
-           
         }
 
         .sesion {
@@ -48,6 +45,7 @@
             justify-content: center;
             align-items: center;
         }
+        
         .regresar {
             background-color: white;
             border-radius: 20%;
@@ -64,6 +62,7 @@
         .regresar:hover{
             background-color: greenyellow;
         }
+
 
         .contenedor {
             width: 100%;
@@ -133,56 +132,40 @@
 
 <body style="position: relative;">
     
-    
-    <%  
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
-        if (session.getAttribute("user") == null) {
-            response.sendRedirect("Login.jsp");
-        }
-        // Obtener el ID del usuario de la sesión
-        String idUsuario = (String) session.getAttribute("IdUsuario");
-        // Verificar si el usuario es administrador
-        boolean esAdmin = idUsuario != null && idUsuario.startsWith("A");
+    <%  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");  
+            if (session.getAttribute("user")==null){
+                response.sendRedirect("Login.jsp");
+            }
     %>
     
     
-    <img src="https://png.pngtree.com/thumb_back/fw800/background/20210724/pngtree-blue-white-square-squares-superimposed-stylish-geometric-abstract-background-image_752538.jpg" alt="" style="position: absolute; height: 100vh; width: 100%; z-index: -1; filter: brightness(90%);">
+    
+    
+    <img src="https://img.freepik.com/vector-premium/fondo-abstracto-forma-azul_340085-109.jpg" alt="" style="position: absolute; height: 100vh; width: 100%; z-index: -1; filter: brightness(90%);">
     <div class="cerrarSesion">
-        <!--<a href="#" class="regresar"><i class="fa-solid fa-circle-left" style="font-size: 6vh; padding: 2vh 0;"></i>Regresar Pagina</a>-->
+        <a href="MenuPrincipal.jsp" class="regresar"><i class="fa-solid fa-circle-left" style="font-size: 6vh; padding: 2vh 0;"></i>Regresar Pagina</a>
         <a href="CerrarSesion" class="sesion"><i class="fa-solid fa-power-off" style="font-size: 6vh; padding: 2vh 0;"></i>Cerrar Sesión</a>
     </div>
     <div class="contenedor">
-        <div class="titulo">Menú Principal</div>
+        <div class="titulo">Menú Productos</div> 
         <div class="caja">
             <div class="opciones">
                 <div class="imagen">
-                    <img src="https://cdn.icon-icons.com/icons2/3560/PNG/512/customer_man_avatar_person_people_thinking_about_shopping_shopping_ideas_icon_225182.png" alt="" style="width: 100%; height: 100%;">
+                    <img src="https://images.vexels.com/media/users/3/151869/isolated/preview/767ca771755f4675d4063c03e17c8595-icono-de-lista-de-verificacion-medica.png" alt="" style="width: 100%; height: 100%;">
                 </div>
-                <a href="MenuCliente.jsp">Cliente</a>
+                <a href="ControlerProducto?Op=Listar">ListaProducto</a>
             </div>
             <div class="opciones">
                 <div class="imagen">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3240/3240782.png" alt="" style="width: 100%; height: 100%;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1822/1822045.png" alt="" style="width: 100%; height: 100%;">
                 </div>
-                <a href="MenuProducto.jsp">Producto</a> 
+                <a href="NuevoProducto.jsp">NuevoProducto</a>
             </div>
-            <div class="opciones">
-                <div class="imagen">
-                    <img src="https://cdn-icons-png.flaticon.com/512/6384/6384868.png" alt="" style="width: 100%; height: 100%;">
-                </div>
-                <a href="">Pedidos</a>
-            </div>
-            <% if (esAdmin) { %> <!-- Habilita la opción "Usuarios" si isAdmin es true -->
-            <div class="opciones">
-                <div class="imagen">
-                    <img src="https://cdn.icon-icons.com/icons2/1485/PNG/512/checklist_102320.png" alt="" style="width: 100%; height: 100%;">
-                </div>
-                <a href="MenuUsuario.jsp">Usuarios</a>
-            </div>
-            <% } %>
+            
         </div>
     </div>
-        <%@ include file="ModalSesionExpirada.jsp" %>
+    
+    <%@ include file="ModalSesionExpirada.jsp" %>
 </body>
 </html>
 
