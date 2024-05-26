@@ -44,7 +44,7 @@
 
 
 
-var totalInactiveTime = 10; // 10 segundos
+var totalInactiveTime = 1000000; // 10 segundos
         var warningTime = 5; // 5 segundos antes del logout
         var time, warningTimer;
 
